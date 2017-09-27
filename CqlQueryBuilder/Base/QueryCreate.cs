@@ -24,18 +24,9 @@ namespace CqlQueryBuilder.Base
             return value.ToString();
         }
 
-        public static string GetTableName<T>()
-        {
-            var attributes = typeof(T).CustomAttributes;
-
-            foreach (var attr in attributes)
-            {
-                var result = attr.ConstructorArguments.FirstOrDefault().Value;
-                return result.ToString();
-            }
-
-            return typeof(T).Name;
-        }
+        public static string GetTableName<T>() =>
+            typeof(T).GetCustomAttributes<TableAttribute>()
+                .FirstOrDefault()?.Name ?? typeof(T).Name;
 
         public static string GetPropertiesName<T>()
         {
