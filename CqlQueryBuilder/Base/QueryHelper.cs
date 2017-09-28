@@ -1,35 +1,28 @@
-﻿using System;
+﻿using CqlQueryBuilder.Utils;
+using System;
 using System.Linq.Expressions;
+using System.Text;
 
 namespace CqlQueryBuilder.Base
 {
     public static class QueryHelper
     {
+        private const string InsertStatement = "INSERT INTO ";
+
         public static string Select<T>()
         {
             var table = QueryCreate.GetTableName<T>();
             return $"SELECT * FROM {table}";
         }
 
-        public static string Insert<T>()
-        {
-            var table = QueryCreate.GetTableName<T>();
-            var fields = QueryCreate.GetPropertiesName<T>();
-            return $"INSERT INTO {table} ({fields})";
-        }
-
-
-        public static string Insert<T>(params Expression<Func<T, object>>[] parameters)
-        {
-            var table = QueryCreate.GetTableName<T>();
-            var fields = $"{QueryCreate.GetParametersName(parameters)}";
-            return $"INSERT INTO {table} ({fields})";
-        }
-
-        public static string InsertValues<T>(params Expression<Func<T, object>>[] parameters)
-        {
-            return $"VALUES ({QueryCreate.GetValuesByParametersName(parameters)})";
-        }
+        public static string GenerateInsertStatement<T>(T type) =>
+            new StringBuilder()
+                .Append(InsertStatement)
+                .Append(typeof(T).GetMappedTableName())
+                .Append($" ({typeof(T).GetListOfMappedPropertiesWithComma()}) ")
+                .Append("VALUES ")
+                .Append("(" + type.GetAllValuesOfPropertiesWithComma() + ")")
+                .ToString();
 
         public static string Delete<T>()
         {

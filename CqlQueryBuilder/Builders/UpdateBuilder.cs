@@ -5,7 +5,7 @@ using CqlQueryBuilder.Builders.Contracts;
 
 namespace CqlQueryBuilder.Builders
 {
-    public class UpdateBuilder<T> : QueryBase, IWhereBuilder<UpdateBuilder<T>, T> where T : class
+    public class UpdateBuilder<T> : CqlStatementBase, IWhereBuilder<UpdateBuilder<T>, T> where T : class
     {
         public UpdateBuilder(string query) : base(query)
         {
@@ -20,8 +20,8 @@ namespace CqlQueryBuilder.Builders
 
         public UpdateBuilder<T> Where(Expression<Func<T, bool>> parameters)
         {
-            this.AddQuery(QueryHelper.Where(parameters));
-            return new UpdateBuilder<T>(this.Query);
+            this.AddStatement(QueryHelper.Where(parameters));
+            return new UpdateBuilder<T>(GetCqlStatement());
         }
     }
 }
