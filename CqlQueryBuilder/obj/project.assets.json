@@ -664,7 +664,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nelson.souza\\.nuget\\packages\\": {},
+    "C:\\Users\\jroberto.araujo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -673,17 +673,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\nelson.souza\\Documents\\Visual Studio 2017\\Projects\\CqlQueryBuilder\\CqlQueryBuilder\\CqlQueryBuilder.csproj",
+      "projectUniqueName": "D:\\Projects\\GitHub\\CqlQueryBuilder\\CqlQueryBuilder\\CqlQueryBuilder.csproj",
       "projectName": "CqlQueryBuilder",
-      "projectPath": "C:\\Users\\nelson.souza\\Documents\\Visual Studio 2017\\Projects\\CqlQueryBuilder\\CqlQueryBuilder\\CqlQueryBuilder.csproj",
-      "packagesPath": "C:\\Users\\nelson.souza\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nelson.souza\\Documents\\Visual Studio 2017\\Projects\\CqlQueryBuilder\\CqlQueryBuilder\\obj\\",
+      "projectPath": "D:\\Projects\\GitHub\\CqlQueryBuilder\\CqlQueryBuilder\\CqlQueryBuilder.csproj",
+      "packagesPath": "C:\\Users\\jroberto.araujo\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\GitHub\\CqlQueryBuilder\\CqlQueryBuilder\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\nelson.souza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jroberto.araujo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -691,10 +691,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://klondike.fftech.info:9000/api/odata": {},
         "https://api.nuget.org/v3/index.json": {},
-        "https://nexus.fftech.info/repository/farfetch-nuget-group": {},
-        "https://www.myget.org/F/ravendb/api/v3/index.json": {}
+        "https://www.myget.org/F/azure-appservice/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
