@@ -13,7 +13,7 @@ namespace CqlQueryBuilder.Test
 
             var query = QueryBuilder.Update<Product>().Set(p => p.Name == "jr")
                 .Where(p => p.Id == Guid.NewGuid())
-                .Build();
+                .GetCqlStatement();
         }
     }
 }

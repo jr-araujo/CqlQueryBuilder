@@ -5,41 +5,27 @@ using CqlQueryBuilder.Builders;
 
 namespace CqlQueryBuilder
 {
-    public static class QueryBuilder
+    public class QueryBuilder
     {
-        public static SelectBuilder<T> Select<T>() where T : class
-        {
-            var query = QueryHelper.Select<T>();
-            return new SelectBuilder<T>(query);
-        }
+        private QueryBuilder() { }
 
-        public static SelectBuilder<T> Select<T>(params Expression<Func<T, object>>[] parameters) where T : class
-        {
-            throw new NotImplementedException();
-        }
+        public static QueryBuilder New() =>
+            new QueryBuilder();
 
-        public static DeleteBuilder<T> Delete<T>() where T : class
-        {
-            var query = QueryHelper.Delete<T>();
-            return new DeleteBuilder<T>(query);
-        }
+        public SelectBuilder<T> Select<T>() where T : class =>
+            new SelectBuilder<T>(QueryHelper.Select<T>());
 
-        public static InsertBuilder<T> Insert<T>() where T : class
-        {
-            var query = QueryHelper.Insert<T>();
-            return new InsertBuilder<T>(query);
-        }
+        public SelectBuilder<T> Select<T>(params Expression<Func<T, object>>[] parameters)
+            where T : class =>
+                throw new NotImplementedException();
 
-        public static InsertBuilder<T> Insert<T>(params Expression<Func<T, object>>[] parameters) where T : class
-        {
-            var query = QueryHelper.Insert(parameters);
-            return new InsertBuilder<T>(query);
-        }
+        public DeleteBuilder<T> Delete<T>() where T : class =>
+            new DeleteBuilder<T>(QueryHelper.Delete<T>());
 
-        public static UpdateBuilder<T> Update<T>() where T : class
-        {
-            var query = QueryHelper.Update<T>();
-            return new UpdateBuilder<T>(query);
-        }
+        public InsertBuilder<T> Insert<T>(T type) where T : class =>
+            new InsertBuilder<T>(QueryHelper.GenerateInsertStatement<T>(type));
+
+        public static UpdateBuilder<T> Update<T>() where T : class =>
+            new UpdateBuilder<T>(QueryHelper.Update<T>());
     }
 }

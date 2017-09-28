@@ -2,6 +2,6 @@
 {
     public interface IQuery
     {
-        string Build();
+        string GetCqlStatement();
     }
 }
