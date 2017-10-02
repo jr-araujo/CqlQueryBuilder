@@ -25,7 +25,7 @@ namespace CqlQueryBuilder
         public InsertBuilder<T> Insert<T>(T type) where T : class =>
             new InsertBuilder<T>(QueryHelper.GenerateInsertStatement<T>(type));
 
-        public static UpdateBuilder<T> Update<T>() where T : class =>
-            new UpdateBuilder<T>(QueryHelper.Update<T>());
+        public UpdateBuilder<T> Update<T>(T type) where T : class =>
+            new UpdateBuilder<T>(QueryHelper.Update<T>(type));
     }
 }

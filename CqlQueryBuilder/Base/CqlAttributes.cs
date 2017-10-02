@@ -9,7 +9,7 @@ namespace CqlQueryBuilder.Base
         public string Name { get; set; }
         public TableAttribute(string name)
         {
-            this.Name = name;
+            Name = name;
         }
     }
 
@@ -21,8 +21,8 @@ namespace CqlQueryBuilder.Base
 
         public ColumnAttribute(string name, bool isPrimaryKey)
         {
-            this.Name = name;
-            this.IsPrimaryKey = isPrimaryKey;
+            Name = name;
+            IsPrimaryKey = isPrimaryKey;
         }
     }
 }
