@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CqlQueryBuilder.Utils;
+using System;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
@@ -24,30 +25,10 @@ namespace CqlQueryBuilder.Base
             return value.ToString();
         }
 
-        public static string GetTableName<T>()
-        {
-            var attributes = typeof(T).CustomAttributes;
+        public static string GetTableName<T>() => typeof(T).GetMappedTableName();
 
-            foreach (var attr in attributes)
-            {
-                var result = attr.ConstructorArguments.FirstOrDefault().Value;
-                return result.ToString();
-            }
-
-            return typeof(T).Name;
-        }
-
-        public static string GetPropertiesName<T>()
-        {
-            var properties = string.Empty;
-            var props = typeof(T).GetProperties();
-            foreach (var prop in props)
-            {
-                properties += prop.Name + ", ";
-            }
-
-            return properties.Remove(properties.Length - 2);
-        }
+        public static string GetPropertiesName<T>() =>
+            string.Join(", ", typeof(T).GetListOfMappedProperties());
 
         public static string GetValuesAndParametersName<T>(params Expression<Func<T, object>>[] fields)
         {
@@ -85,7 +66,8 @@ namespace CqlQueryBuilder.Base
 
             var memberExp = body as MemberExpression;
             var member = memberExp?.Member;
-            var customAttr = member?.GetCustomAttributes(typeof(ColumnAttribute), true).FirstOrDefault();
+            var customAttr = member?.GetCustomAttributes(typeof(ColumnAttribute), true)
+                .FirstOrDefault();
 
             if (customAttr != null)
             {
