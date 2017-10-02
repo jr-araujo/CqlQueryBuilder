@@ -25,7 +25,6 @@ namespace CqlQueryBuilder.Utils
             return statement + $" WHERE {primaryKey.Name} = "
                 + GetProperlyValue(primaryKey.GetValue(obj, null));
         }
-            
 
         private static string GetProperlyValue(object value) =>
             TypeConverter.ConvertToDbType(value);

@@ -28,7 +28,6 @@ namespace CqlQueryBuilder.Base
                 .Append(" SET ")
                 .Append($" {type.GetMappedPropertiesAndValuesForUpdate()} ")
                 .ToString();
-        
 
         internal static string Delete<T>()
         {
