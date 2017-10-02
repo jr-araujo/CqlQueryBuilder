@@ -22,7 +22,7 @@ namespace CqlQueryBuilder.Base
                 .Append("(" + type.GetAllValuesOfPropertiesWithComma() + ")")
                 .ToString();
 
-        internal static string Update<T>(T type) where T : class =>
+        internal static string GenerateUpdateStatement<T>(T type) where T : class =>
             new StringBuilder()
                 .Append($"UPDATE {typeof(T).GetMappedTableName()}")
                 .Append(" SET ")
