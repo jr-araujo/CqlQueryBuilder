@@ -29,7 +29,7 @@ namespace CqlQueryBuilder.Test
         }
 
         [Fact]
-        public void InsertStatementShouldContain_InsertCommandsParts()
+        public void InsertStatementShouldContain_InsertStatementParts()
         {
             var product = new Product
             {
